@@ -1,0 +1,14 @@
+name: Keep Server Alive
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # كل 10 دقائق
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Server
+        run: |
+          curl -s https://nassrbackend.onrender.com > /dev/null
